@@ -144,7 +144,7 @@ class Server {
     }
     onClientSocketOpen(ws, req) {
         var req = req || ws.upgradeReq;
-        var logip = req.headers['cf-connecting-ip'] + ":" + ws._socket.remotePort;
+        var logip = req.headers['x-real-ip'] + ":" + ws._socket.remotePort;
         ws.on('error', function (err) {
             Logger.writeError("[" + logip + "] " + err.stack);
         });
@@ -152,7 +152,7 @@ class Server {
             ws.close(1000, "No slots");
             return;
         }
-        if (this.checkIpBan(req.headers['cf-connecting-ip'])) {
+        if (this.checkIpBan(req.headers['x-real-ip'])) {
             ws.close(1000, "IP banned");
             return;
         }
@@ -160,7 +160,7 @@ class Server {
             var ipConnections = 0;
             for (var i = 0; i < this.clients.length; i++) {
                 var socket = this.clients[i];
-                if (!socket.isConnected || socket.remoteAddress != req.headers['cf-connecting-ip'])
+                if (!socket.isConnected || socket.remoteAddress != req.headers['x-real-ip'])
                     continue;
                 ipConnections++;
             }
@@ -174,7 +174,7 @@ class Server {
             return;
         }
         ws.isConnected = true;
-        ws.remoteAddress = req.headers['cf-connecting-ip'];
+        ws.remoteAddress = req.headers['x-real-ip'];
         ws.remotePort = ws._socket.remotePort;
         ws.lastAliveTime = Date.now();
         Logger.write("CONNECTED " + ws.remoteAddress + ":" + ws.remotePort + ", origin: \"" + req.headers.origin + "\"");
