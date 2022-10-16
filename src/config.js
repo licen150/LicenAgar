@@ -39,11 +39,11 @@ module.exports = Object.seal({
 // serverRestart: Toggle whether you want your server to auto-restart in minutes. (set to 0 to disable)
 "serverTimeout": 300,
 "serverMaxConnections": 500,
-"serverPort": 8080,
+"serverPort": 8443,
 "serverBind": "0.0.0.0",
 "serverTracker": 0,
 "serverGamemode": 0,
-"serverBots": 0,
+"serverBots": 50,
 "serverViewBaseX": 1920,
 "serverViewBaseY": 1080,
 "serverMinScale": 0.15,
@@ -64,12 +64,12 @@ module.exports = Object.seal({
 // clientBind: Only allow connections to the server from specified client (eg: http://agar.io - http://mywebsite.com - http://more.com) [Use ' - ' to seperate different websites]
 "serverMaxLB": 10,
 "serverChat": 1,
-"serverChatAscii": 1,
+"serverChatAscii": 0,
 "separateChatForTeams": 0,
-"serverName": "MultiOgarII #1",
-"serverWelcome1": "Welcome to MultiOgarII!",
+"serverName": "LicenAgar #1",
+"serverWelcome1": "Welcome to LicenAgar!",
 "serverWelcome2": "",
-"clientBind": "",
+"clientBind": "https://agar.licen777.ru",
 
 // [ANTI-BOT]
 // serverIpLimit: Controls the maximum number of connections from the same IP (0 for no limit)
@@ -97,7 +97,7 @@ module.exports = Object.seal({
 // foodMassGrow: Enable food mass grow ?
 "foodMinSize": 10,
 "foodMaxSize": 20,
-"foodAmount": 700,
+"foodAmount": 2000,
 "foodMassGrow": 1,
 
 // [VIRUSES]
@@ -159,7 +159,7 @@ module.exports = Object.seal({
 "playerSpeed": 1,
 "playerDecayRate": 0.002,
 "playerDecayCap": 0,
-"playerRecombineTime": 30,
+"playerRecombineTime": 0,
 "playerMaxNickLength": 15,
 "playerDisconnectTime": -1,
 "splitVelocity": 780,
